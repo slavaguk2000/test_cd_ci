@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - functions/**
-      - !resources/**
+      - '!resources/**'
 
 jobs:
   build:
