@@ -4,16 +4,27 @@ on:
   push:
     branches: 
       - main
-    paths:
-      - functions/**
-      - '!resources/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
 
-      - name: Echo 1 request
-        run: echo ${{ toJson(github) }}
+        id: changes
+        with:
+          filters: |
+            resources:
+              - 'resources/**'
+            functions:
+              - 'functions/**'
+
+      - if: steps.changes.outputs.functions == 'true' && steps.changes.outputs.resources == 'false'
+        run: echo funs
+
+      - if: steps.changes.outputs.resources == 'true'
+        run: echo reses
+
+      - if: steps.changes.outputs.functions == 'true' || steps.changes.outputs.resources == 'true'
+        run: echo functions and resources
