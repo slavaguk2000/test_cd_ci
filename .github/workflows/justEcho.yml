@@ -3,6 +3,7 @@ name: echo
 on:
   push:
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,10 +13,10 @@ jobs:
 
       - name: set env1
         if: github.ref == 'refs/heads/newBranch'
-        run: ENNNNV="env1"    
+        run: echo "ENNNNV=env1" >> $GITHUB_ENV    
 
       - name: set env2
         if: github.ref == 'refs/heads/main'
-        run: ENNNNV="env2"    
+        run: echo "ENNNNV=env1" >> $GITHUB_ENV
       
       - run: echo ${{ env.ENNNNV }}
