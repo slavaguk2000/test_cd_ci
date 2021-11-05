@@ -2,8 +2,6 @@ name: echo
 
 on:
   push:
-    branches: 
-      - main
 
 jobs:
   build:
