@@ -12,10 +12,10 @@ jobs:
 
       - name: set env1
         if: github.ref == 'refs/heads/newBranch'
-        run: export ENNNNV="env1"    
+        run: ENNNNV="env1"    
 
       - name: set env2
         if: github.ref == 'refs/heads/main'
-        run: export ENNNNV="env2"    
+        run: ENNNNV="env2"    
       
       - run: echo ${{ env.ENNNNV }}
