@@ -9,5 +9,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: set env1
+        if: github.ref == 'refs/heads/newBranch'
+        run: export ENNNNV="env1"    
+
+      - name: set env2
+        if: github.ref == 'refs/heads/main'
+        run: export ENNNNV="env2"    
       
-      - run: echo ${{ toJson(github.head_ref) }}
+      - run: echo ${{ env.ENNNNV }}
